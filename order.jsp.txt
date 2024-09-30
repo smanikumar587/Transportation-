@@ -1,0 +1,183 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Moving Service Order</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"></script>
+    <style type="text/css">
+    /* Style for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the header */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Style for the form container */
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for labels */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style for text inputs and textareas */
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Style for distance input (read-only) */
+input[type="text"][readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Style for number inputs */
+input[type="number"] {
+    width: 50px;
+}
+
+/* Style for the Packers Service section */
+h2 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    form {
+        padding: 10px;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    textarea,
+    select {
+        font-size: 14px;
+    }
+}
+    
+    </style>
+    <style>
+    /* Style for larger input fields */
+    input[type="number"],
+    input[type="text"],
+    textarea,
+    select {
+        width: 100%; /* Make the input fields 100% wide */
+        padding: 10px; /* Add some padding for better appearance */
+        font-size: 18px; /* Increase the font size */
+    }
+</style>
+<style>
+    /* Center the submit button */
+    .center-button {
+        text-align: center;
+    }
+</style>
+
+    
+</head>
+<body>
+    <h1>Moving Service Order</h1>
+
+    <form action="process_order.jsp" method="post">
+        <input type="hidden" name="charges" value="<%= request.getParameter("charges") %>">
+        
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customerName" required><br><br>
+        
+        <label for="contactNumber">Contact Number:</label>
+        <input type="tel" id="contactNumber" name="contactNumber" required><br><br>
+        
+        <label for="movingDate">Moving Date:</label>
+        <input type="date" id="movingDate" name="movingDate" required><br><br>
+        
+        <label for="pickupAddress">Pickup Address:</label>
+        <textarea id="pickupAddress" name="pickupAddress" rows="4" required></textarea><br><br>
+        
+        <label for="deliveryAddress">Delivery Address:</label>
+        <textarea id="deliveryAddress" name="deliveryAddress" rows="4" required></textarea><br><br>
+        
+        <label for="services">Select Services:</label>
+        <select id="services" name="services" required>
+            <option value="local">Local Moving</option>
+            <option value="longDistance">Long Distance Moving</option>
+        </select><br><br>
+        
+        <!-- New field for displaying the calculated distance -->
+        <label for="distance">Total Distance Traveled (km):</label>
+        <input type="text" id="distance" name="distance" ><br><br>
+
+        <!-- Packers Service Section -->
+        <h1>Packers Service</h1>
+
+			<!-- Item: Fridge -->
+			<label for="fridgeQuantity">Fridge (Rs. 200 each):</label>
+			<input type="number" id="fridgeQuantity" name="fridgeQuantity" min="0" value="0"><br><br>
+			
+			<!-- Item: Fan -->
+			<label for="fanQuantity">Fan (Rs. 100 each):</label>
+			<input type="number" id="fanQuantity" name="fanQuantity" min="0" value="0"><br><br>
+			
+			<!-- Item: Tables -->
+			<label for="tablesQuantity">Tables (Rs. 300 each):</label>
+			<input type="number" id="tablesQuantity" name="tablesQuantity" min="0" value="0"><br><br>
+			
+			<!-- Item: Sofa -->
+			<label for="sofaQuantity">Sofa (Rs. 750 each):</label>
+			<input type="number" id="sofaQuantity" name="sofaQuantity" min="0" value="0"><br><br>
+			
+			<!-- Item: Luggage -->
+			<label for="luggageQuantity">Luggage (Rs. 150 each):</label>
+			<input type="number" id="luggageQuantity" name="luggageQuantity" min="0" value="0"><br><br>
+
+        <div class="center-button">
+	        <input type="submit" value="Submit Order">
+	    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.io.*, java.math.BigDecimal" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+        }
+
+        a.btn {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a.btn:hover {
+            background-color: #45a049;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+       p {
+		    text-align: center;
+		    color: red; 
+		    font-weight: bold; 
+		    font-size: 18px; 
+		    margin-top: 10px; 
+		}
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logout-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* Style for the logout button */
+    .logout-button {
+        font-size: 24px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    /* Style for the logout button on hover */
+    .logout-button:hover {
+        background-color: #45a049;
+    }
+  
+    </style>
+</head>
+<body>
+<%
+    Connection con = null;
+    
+    try {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
+        String URL = "jdbc:mysql://localhost:3306/movehome";
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection(URL, "root", "");
+        
+        // Check if the email and password exist in the database
+        PreparedStatement ps = con.prepareStatement("SELECT id,first_name, email, password FROM register WHERE email=? AND password=?");
+        ps.setString(1, email);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            // If the user is found in the database, set the email in the session
+            HttpSession mysession = request.getSession();
+            mysession.setAttribute("email", email);
+%>
+            <!-- Display user's order details -->
+            <h1 align="center" style='color:purple;'>You are Successfully Logged in, <%= rs.getString("first_name") %>!</h1>
+            <h2 align="center" style='color:blue;'>Movers Details:</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Charges</th>
+                    <th>Phone Number</th>
+                    <th>Order Now</th>
+                </tr>
+<%
+            PreparedStatement moversPs = con.prepareStatement("SELECT * FROM movers");
+            ResultSet moversRs = moversPs.executeQuery();
+            while (moversRs.next()) {
+%>
+                <tr>
+                    <td><%= moversRs.getInt("id") %></td>
+                    <td><%= moversRs.getString("name") %></td>
+                    <td><%= moversRs.getInt("charges") %>.00 Rs per Km</td>
+                    <td><%= moversRs.getString("phone") %></td>
+                    <td><a href="order.jsp?charges=<%= moversRs.getInt("charges") %>">Order</a></td>
+                </tr>
+<%
+            }
+%>
+            </table>
+
+            <!-- Add a link to view user's status -->
+            <!-- Add a link to view user's status -->
+			<div align="center">
+			    <a href='status.jsp?id=<%= rs.getInt("id") %>' style='font-size: 20px;'>View Status</a>
+			</div>
+			<br>
+			<div align="center">
+			    <a href='review.jsp?id=<%= rs.getInt("id") %>' style='font-size: 20px;'>Write a Review</a>
+			</div>
+
+
+            <!-- Center-align the logout button -->
+            <div class="logout-button-container">
+                <form action="login.html" method="post">
+                    <input class="logout-button" type="submit" value="Logout">
+                </form>
+            </div>
+
+<%
+        } else {
+%>
+            <p>Username or Password is incorrect</p>
+            <a href="login.html" class="btn">Try Again</a>
+<%
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        // Close the database connection in the finally block
+        try {
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>
+</body>
+</html>

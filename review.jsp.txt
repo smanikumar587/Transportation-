@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Star Rating System with Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        .rating-container {
+            margin: 20px;
+        }
+
+        .stars {
+            display: inline-block;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .stars:hover {
+            color: gold;
+        }
+
+        .selected {
+            color: gold;
+        }
+
+        #message {
+            width: 300px;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        #submit-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Share Your Experience</h1>
+    <form action="review_submit.jsp" method="post">
+        <div class="rating-container">
+            <div class="stars" data-rating="1">&#9733;</div>
+            <div class="stars" data-rating="2">&#9733;</div>
+            <div class="stars" data-rating="3">&#9733;</div>
+            <div class="stars" data-rating="4">&#9733;</div>
+            <div class="stars" data-rating="5">&#9733;</div>
+        </div>
+
+        <p>Your Rating: <span id="selected-rating">0</span> stars</p>
+
+        <label for="message">Write a Review:</label>
+        <input type="text" id="message" name="message" placeholder="Your review..." style="width: 300px; height: 100px;">
+        <input type="hidden" id="rating" name="rating" value="0"><br><br>
+        <input type="submit" id="submit-button" value="Submit">
+    </form>
+
+    <script>
+        const stars = document.querySelectorAll('.stars');
+        const selectedRating = document.getElementById('selected-rating');
+        const messageInput = document.getElementById('message');
+        const ratingInput = document.getElementById('rating');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                selectedRating.textContent = rating;
+                ratingInput.value = rating; // Set the hidden input value
+                highlightSelectedStars(rating);
+            });
+        });
+
+        function highlightSelectedStars(rating) {
+            stars.forEach(star => {
+                const starRating = parseInt(star.getAttribute('data-rating'));
+                if (starRating <= rating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

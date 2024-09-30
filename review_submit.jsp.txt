@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing Rating</title>
+</head>
+<body>
+    <%
+        // Database connection details (modify these with your own)
+        String jdbcURL = "jdbc:mysql://localhost:3306/movehome";
+        String dbUser = "root";
+        String dbPassword = "";
+
+        // Form data
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        String message = request.getParameter("message");
+
+        // Database connection variables
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            // Load the JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // Establish a connection to the database
+            connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+            // SQL statement to insert the rating and message into the database
+            String sql = "INSERT INTO reviews (rating, message) VALUES (?, ?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, rating);
+            preparedStatement.setString(2, message);
+
+            // Execute the SQL statement
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Display a success message using JavaScript alert
+    %>
+                <script>
+                    alert("Thank you for your feedback!\nHave a Nice Day");
+                    window.location.href = "http://localhost:8080/Project/move_home/jsp/login.html"; // Redirect to the rating page
+                </script>  
+    <%
+            } else {
+                out.println("<p>Error: Failed to store data in the database.</p>");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close database resources
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    %>
+</body>
+</html>

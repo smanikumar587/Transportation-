@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Enquiry Result</title>
+</head>
+<body>
+<%
+    String email = request.getParameter("email");
+    String message = request.getParameter("message");
+    
+    // Database connection 
+    String url = "jdbc:mysql://localhost:3306/movehome";
+    String user = "root";
+    String password = "";
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    String sql = "INSERT INTO enquiry (email, message) VALUES (?, ?)";
+
+    try {
+        //database connection
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(url, user, password);
+
+        // Prepare and execute SQL statement
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, email);
+        pstmt.setString(2, message);
+        
+        pstmt.executeUpdate();
+
+        // Use JavaScript to show an alert box
+        out.println("<script type='text/javascript'>");
+        out.println("alert('Your Enquiry Form is successfully submitted!\\nWe will contact you later.\\nAnd We will help you out');");
+        out.println("window.location.href = 'http://localhost:8081/JSP_Programs/move_home/index.html';"); // Replace with the page you want to redirect to
+        out.println("</script>");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        out.println("Error: " + e.getMessage());
+    } finally {
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>
+</body>
+</html>

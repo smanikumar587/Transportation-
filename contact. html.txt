@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <title>Move Home</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <div class="hero_bg_box">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+ 
+ <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container header_top_container">
+          <div class="row">
+          <div class="col-md-4">
+            <div class="full">
+              <div class="social_box">
+                <a target="blank" href="http://www.facebook.com">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a target="blank" href="http://www.twitter.com">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a target="blank" href="http://www.instagram.com">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a target="blank" href="http://www.youtube.com">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="full">
+              <div class="contact_nav">
+                <a target="_blank" href="https://goo.gl/maps/fApY8KtUCVfTNU8ZA">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    Move Home
+                  </span>
+                </a>
+                <a target="_blank" href="http://www.gmail.com">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    muralidhara@gmail.com
+                  </span>
+                </a>
+                <a target="_blank" href="tel:+91 6360237711" class="call-link">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call : +91 6360237711
+                  </span>
+                </a>   
+                <a></a>            
+				<a target="_blank" style="float: right; margin-right: 0px;" href="http://localhost:8081/move_home/jsp/admin.html">
+				  <i class="fa fa-sign-in" aria-hidden="true"></i>
+				  <span>Admin Login</span>
+				</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="full">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand " href="index.html"><img width="120" src="images/logo_main.png" alt="#" /></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="news.jsp">Reviews</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Register</a>
+                </li>
+                <li class="nav-item">
+                  <a target="_blank" class="nav-link" href="jsp/login.html">Login</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+ <!-- Registration section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-11 col-lg-9 mx-auto">
+          <div class="map_form_container">
+            <div class="form_container">
+              <div class="heading_container heading_center">
+                <h2 class="contact_heading">
+                  Registration<span> Form</span>
+                </h2>
+              </div>
+              <form target="_blank" action="jsp/submit.jsp">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="first_name" placeholder="First Name" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="email" placeholder="Email" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="password" class="form-control" name="password" placeholder="Password" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="phone_number" placeholder="Phone Number" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="city" placeholder="City" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="state" placeholder="State" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="pincode" placeholder="Pincode" />
+                  </div>
+                </div>
+                <div class="form-group ">
+                  <input type="text" class="message-box" name="address" placeholder="Full Address" />
+                </div>
+               
+                <div class="btn-box">
+                  <button type="submit" class="submit_btn">
+                    Submit
+                  </button>
+                  
+                </div>
+              </form>
+            </div>
+            <div class="map_container">
+              <div class="map">
+                <div id="googleMap"></div>
+              </div>
+              <div class="btn-box">
+                <button id="showForm" class="map_btn">
+                  Form
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end Registration section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+     <a href="index.html" class="footer-brand">
+        <img src="images/logo_main.png" alt="#" />
+      </a>
+      <div class="col-lg-10 mx-auto px-0">
+        <div class="footer_items">
+          <div class="row">
+            <div class="col-md-4">
+              <a target="_blank" href="https://goo.gl/maps/fApY8KtUCVfTNU8ZA">
+                <div class="item ">
+                  <div class="img-box ">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Move Home is simply
+                  </p>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <a target="_blank" href="tel:+91 6360237711" class="call-link">
+                <div class="item ">
+                  <div class="img-box ">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    +91 6360237711
+                  </p>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <a target="blank" href="http://www.gmail.com">
+                <div class="item ">
+                  <div class="img-box">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    muralidhara@gmail.com
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="social-box">
+        <h4>
+          Follow Us On
+        </h4>
+        <div class="box">
+          <a target="blank" href="http://www.facebook.com">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a target="blank" href="http://www.twitter.com">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a target="blank" href="http://www.youtube.com">
+            <i class="fa fa-youtube" aria-hidden="true"></i>
+          </a>
+          <a target="blank" href="http://www.instagram.com">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a target="blank" href="http://www.google.com">
+            <i class="fa fa-google-plus" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-10 mx-auto px-0">
+        <div class="footer_form">
+          <h4>
+            Enquiry Box
+          </h4>
+          <form action="jsp/enquiry.jsp">
+            <input type="text" name="email" placeholder="Enter Your Email" />
+            <input type="text" name="message" placeholder="Message/Question" />
+            <button type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-info">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved 
+          <a href="https://html.design/"></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+</body>
+
+</html>
